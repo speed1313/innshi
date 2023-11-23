@@ -1,16 +1,18 @@
-
 class Const:
     def __init__(self, i):
         self.i = i
+
 
 class Variable:
     def __init__(self, x):
         self.x = x
 
+
 class Add:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
 
 class Mult:
     def __init__(self, x, y):
@@ -22,6 +24,7 @@ class Parser:
     def __init__(self, program):
         self.program = program
         self.loc = 0
+
     def peek(self):
         if self.loc > len(self.program):
             return None
@@ -30,7 +33,7 @@ class Parser:
 
     def expr(self):
         lh = self.mul()
-        while (self.loc < len(self.program)):
+        while self.loc < len(self.program):
             if self.program[self.loc] == "+":
                 if self.peek() == None:
                     return lh
@@ -45,7 +48,7 @@ class Parser:
 
         if self.loc >= len(self.program):
             print("here")
-        while (self.loc < len(self.program)):
+        while self.loc < len(self.program):
             if self.program[self.loc] == "*":
                 if self.peek() == None:
                     return lh
@@ -62,6 +65,7 @@ class Parser:
 
 program = [Const(4), "*", Variable("x"), "+", Const(5)]
 
+
 def print_exp(exp):
     if isinstance(exp, Const):
         print(exp.i)
@@ -77,11 +81,12 @@ def print_exp(exp):
         print_exp(exp.y)
     else:
         print("error")
+
+
 exp = Parser(program).expr()
 print(exp.x)
 print(exp.y)
 print_exp(exp)
-
 
 
 def simplifyZero(exp):
@@ -102,6 +107,7 @@ def simplifyZero(exp):
     if isinstance(exp, Variable):
         return exp
 
+
 print("simplifyZero")
 program = [Const(4), "*", Variable("x"), "+", Const(0)]
 print_exp(simplifyZero(Parser(program).expr()))
@@ -109,9 +115,6 @@ print_exp(simplifyZero(Parser(program).expr()))
 print("example2")
 program = [Const(0), "*", Variable("x"), "+", Const(5)]
 print_exp(simplifyZero(Parser(program).expr()))
-
-
-
 
 
 def is_same(exp1, exp2):
@@ -127,6 +130,7 @@ def is_same(exp1, exp2):
         if isinstance(exp1, Mult):
             return is_same(exp1.x, exp2.x) and is_same(exp1.y, exp2.y)
         return False
+
 
 def test_simplify():
     exp = Add(Const(4), Mult(Const(0), Variable("x")))

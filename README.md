@@ -1,6 +1,6 @@
-# Examples of Answers to Innshi
+# Example solution to programming implementation questions
 
-Examples of answers to the implementation part of the questions on programming language processing for the graduate exam.
+This is my example solution to programming implementation questions in the Entrance Examination for the Master's Program in the Department of Communications and Computer Engineering at the Graduate School of Informatics, Kyoto University.
 
 
 Note: Sample answers may contain errors.

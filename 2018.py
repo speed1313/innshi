@@ -2,11 +2,13 @@ class Variable:
     def __init__(self, x):
         self.x = x
 
+
 class If_stmt:
     def __init__(self, cond, then, else_):
         self.cond = cond
         self.then = then
         self.else_ = else_
+
 
 class Let_stmt:
     def __init__(self, var, bind_exp, inner_exp):
@@ -14,10 +16,13 @@ class Let_stmt:
         self.bind_exp = bind_exp
         self.inner_exp = inner_exp
 
+
 class Add:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+
 class Sub:
     def __init__(self, x, y):
         self.x = x
@@ -51,22 +56,22 @@ def eval(exp, env):
         case _:
             return exp
 
+
 import random
+
 x = random.choice([True, False])
-exp = Let_stmt("x", x, If_stmt(Variable("x"), Add(2,3), 3))
+exp = Let_stmt("x", x, If_stmt(Variable("x"), Add(2, 3), 3))
 env = []
 print(eval(exp, env))
-
 
 
 print(env)
 
 
-env_table = { "x": 2}
-
+env_table = {"x": 2}
 
 
 def test_eval():
-    exp = Let_stmt("x", True, If_stmt(Variable("x"), Add(2,3), 3))
+    exp = Let_stmt("x", True, If_stmt(Variable("x"), Add(2, 3), 3))
     env = []
     assert eval(exp, env) == 5
